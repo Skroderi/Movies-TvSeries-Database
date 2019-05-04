@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Movie = (props) => {
+    // const idMovie = props.id
+    // console.log(idMovie);
 
     return (
-        <a href="#" className="movie">
+        <NavLink exact to={`/movie/${props.id}`} className="movie" onClick={() => props.getId(props.id)}>
             <img src={props.img} alt={props.title} />
             <div className="info">
                 <h1>{props.title}</h1>
                 <h2>Release:</h2>
                 <span>{props.release}</span>
-                {props.id}
+
             </div>
-        </a>
+        </NavLink >
     );
 }
 

@@ -13,8 +13,10 @@ const tvApi = `https://api.themoviedb.org/3/trending/tv/day?api_key=${ApiKey}`
 class App extends Component {
   state = {
     movies: [],
-    tvSeries: []
+    tvSeries: [],
+    movieId: ''
   }
+
   componentDidMount() {
     fetch(movieApi)
       .then(response => {
@@ -43,12 +45,18 @@ class App extends Component {
       })
   }
 
+  getId = (id) => {
+    this.setState({
+      movieId: id
+    })
+  }
   render() {
+
     return (
       <Router>
         <div className="App">
           <Header />
-          <Result data={this.state} />
+          <Result data={this.state} click={this.getId} movieId={this.state.movieId} />
         </div>
       </Router>
     );

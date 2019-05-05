@@ -14,9 +14,11 @@ class App extends Component {
   state = {
     movies: [],
     tvSeries: [],
-    movieId: ''
+    movieId: '',
+    tvSeriesId: '',
+    bgcM: '',
+    bgcT: ''
   }
-
   componentDidMount() {
     fetch(movieApi)
       .then(response => {
@@ -25,7 +27,8 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(data => this.setState({
-        movies: data.results
+        movies: data.results,
+        bgcM: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
@@ -38,25 +41,34 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(data => this.setState({
-        tvSeries: data.results
+        tvSeries: data.results,
+        bgcT: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
       })
   }
-
-  getId = (id) => {
+  handleGetMovieId = (id) => {
     this.setState({
-      movieId: id
+      movieId: id,
     })
   }
+  handleGetTvId = (id) => {
+    this.setState({
+      tvSeriesId: id,
+    })
+  }
+
   render() {
+    console.log(this.state.movies);
 
     return (
       <Router>
         <div className="App">
-          <Header />
-          <Result data={this.state} click={this.getId} movieId={this.state.movieId} />
+          <div className="main">
+            <Header />
+            <Result data={this.state} getMovieId={this.handleGetMovieId} movieId={this.state.movieId} getTvId={this.handleGetTvId} tvSeriesId={this.state.tvSeriesId} bgcM={this.state.bgcM} bgcT={this.state.bgcT} />
+          </div>
         </div>
       </Router>
     );

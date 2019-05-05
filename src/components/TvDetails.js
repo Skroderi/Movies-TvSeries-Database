@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 const ApiKey = process.env.REACT_APP_MOVIE_API_KEY;
-class MovieDetals extends Component {
-    state = {
-        movieDetails: [],
-        id: this.props.id,
-    }
 
+class TvDetails extends Component {
+    state = {
+        tvDetails: [],
+        id: this.props.id
+    }
     componentDidMount() {
-        const api = `https://api.themoviedb.org/3/movie/${this.state.id}?api_key=${ApiKey}&append_to_response=videos`
+        const api = `https://api.themoviedb.org/3/tv/${this.state.id}?api_key=${ApiKey}&append_to_response=videos`
         fetch(api)
             .then(response => {
                 if (response.ok) return response
@@ -16,47 +16,48 @@ class MovieDetals extends Component {
             .then(response => response.json())
 
             .then(data => this.setState({
-                movieDetails: data
+                tvDetails: data
             }))
             .catch(error => {
                 console.log(error)
             })
     }
-    render() {
-        console.log(this.state.movieDetails);
-        const movieDetails = this.state.movieDetails;
-        return (
 
+
+    render() {
+        const tv = this.state.tvDetails;
+        console.log(this.state.tvDetails);
+        return (
             <div className="container">
-                <div className="bg" style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${this.state.movieDetails.backdrop_path}')` }}></div>
+                <div className="bg" style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${tv.backdrop_path}')` }}></div>
                 <div className="movieInfo">
                     <div className="poster">
-                        <img src={`https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`} alt="" />
+                        <img src={`https://image.tmdb.org/t/p/w300/${tv.poster_path}`} alt="" />
                     </div>
                     <div className="details">
-                        <h1>{movieDetails.original_title}</h1>
-                        <p className="overview">{movieDetails.overview}</p>
+                        <h1>{tv.original_name}</h1>
+                        <p class="overview">{tv.overview}</p>
 
                         <ul>
                             <li><p>Genres:</p>
-                                {movieDetails.genres && movieDetails.genres.map(genre => {
+                                {tv.genres && tv.genres.map(genre => {
                                     return <strong key={genre.id}>{genre.name},</strong>
                                 })}
                             </li>
-                            <li><p>Premiere:</p><strong>{movieDetails.release_date}</strong></li>
+                            <li><p>Premiere:</p><strong>{tv.first_air_date}</strong></li>
+                            <li><p>Seasons:</p><strong>{tv.number_of_seasons}</strong></li>
+                            <li><p>Episodes:</p><strong>{tv.number_of_episodes}</strong></li>
                             <li><p>Production:</p>
-                                {movieDetails.production_countries && movieDetails.production_countries.map(country => {
-                                    return <strong key={Math.random() * 10}>{country.iso_3166_1},</strong>
-                                })}
+                                <strong>{tv.origin_country}</strong>
                             </li>
-                            <li><p>Rating:</p><strong>{movieDetails.vote_average}/10</strong></li>
+                            <li><p>Rating:</p><strong>{tv.vote_average}/10</strong></li>
                             {/* <li><strong>Budget:&nbsp;</strong><p>${movie.budget}</p></li> */}
                         </ul>
                     </div>
                 </div>
                 <div className="movieVideos">
                     <h1 className="movie-videos__title">Trailers</h1>
-                    {movieDetails.videos && movieDetails.videos.results.slice(0, 2).map((video) => {
+                    {tv.videos && tv.videos.results.slice(0, 2).map(video => {
                         return (
                             <iframe className="video" title="Trailer" style={{ border: "none" }}
                                 src={'https://www.youtube.com/embed/' + video.key} key={video.id}
@@ -71,11 +72,9 @@ class MovieDetals extends Component {
                         )
                     })}
                 </div>
-
             </div>
         );
     }
 }
 
-
-export default MovieDetals; 
+export default TvDetails;

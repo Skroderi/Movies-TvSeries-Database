@@ -3,11 +3,17 @@ const ApiKey = process.env.REACT_APP_MOVIE_API_KEY;
 class MovieDetals extends Component {
     state = {
         movieDetails: [],
-        id: this.props.id,
+    }
+    componentDidUpdate(prevProps) {
+
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this.componentDidMount()
+        }
     }
 
     componentDidMount() {
-        const api = `https://api.themoviedb.org/3/movie/${this.state.id}?api_key=${ApiKey}&append_to_response=videos`
+        const id = this.props.match.params.id;
+        const api = `https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&append_to_response=videos`
         fetch(api)
             .then(response => {
                 if (response.ok) return response
@@ -23,7 +29,7 @@ class MovieDetals extends Component {
             })
     }
     render() {
-        console.log(this.state.movieDetails);
+        // console.log(this.state.movieDetails);
         const movieDetails = this.state.movieDetails;
         return (
 
@@ -50,7 +56,6 @@ class MovieDetals extends Component {
                                 })}
                             </li>
                             <li><p>Rating:</p><strong>{movieDetails.vote_average}/10</strong></li>
-                            {/* <li><strong>Budget:&nbsp;</strong><p>${movie.budget}</p></li> */}
                         </ul>
                     </div>
                 </div>

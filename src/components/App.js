@@ -14,8 +14,8 @@ class App extends Component {
   state = {
     movies: [],
     tvSeries: [],
-    movieId: '',
-    tvSeriesId: '',
+    // movieId: '',
+    // tvSeriesId: '',
     bgcM: '',
     bgcT: ''
   }
@@ -48,26 +48,15 @@ class App extends Component {
         console.log(error)
       })
   }
-  handleGetMovieId = (id) => {
-    this.setState({
-      movieId: id,
-    })
-  }
-  handleGetTvId = (id) => {
-    this.setState({
-      tvSeriesId: id,
-    })
-  }
 
   render() {
-    console.log(this.state.movies);
 
     return (
       <Router>
         <div className="App">
           <div className="main">
             <Header />
-            <Result data={this.state} getMovieId={this.handleGetMovieId} movieId={this.state.movieId} getTvId={this.handleGetTvId} tvSeriesId={this.state.tvSeriesId} bgcM={this.state.bgcM} bgcT={this.state.bgcT} />
+            <Result data={this.state} bgcM={this.state.bgcM} bgcT={this.state.bgcT} />
           </div>
         </div>
       </Router>

@@ -6,8 +6,16 @@ class TvDetails extends Component {
         tvDetails: [],
         id: this.props.id
     }
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this.componentDidMount()
+        }
+    }
+
     componentDidMount() {
-        const api = `https://api.themoviedb.org/3/tv/${this.state.id}?api_key=${ApiKey}&append_to_response=videos`
+        const id = this.props.match.params.id;
+
+        const api = `https://api.themoviedb.org/3/tv/${id}?api_key=${ApiKey}&append_to_response=videos`
         fetch(api)
             .then(response => {
                 if (response.ok) return response
@@ -26,7 +34,7 @@ class TvDetails extends Component {
 
     render() {
         const tv = this.state.tvDetails;
-        console.log(this.state.tvDetails);
+        // console.log(this.state.tvDetails);
         return (
             <div className="container">
                 <div className="bg" style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${tv.backdrop_path}')` }}></div>
@@ -36,7 +44,7 @@ class TvDetails extends Component {
                     </div>
                     <div className="details">
                         <h1>{tv.original_name}</h1>
-                        <p class="overview">{tv.overview}</p>
+                        <p className="overview">{tv.overview}</p>
 
                         <ul>
                             <li><p>Genres:</p>
@@ -51,7 +59,6 @@ class TvDetails extends Component {
                                 <strong>{tv.origin_country}</strong>
                             </li>
                             <li><p>Rating:</p><strong>{tv.vote_average}/10</strong></li>
-                            {/* <li><strong>Budget:&nbsp;</strong><p>${movie.budget}</p></li> */}
                         </ul>
                     </div>
                 </div>

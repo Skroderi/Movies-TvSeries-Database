@@ -1,16 +1,53 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
 
+import { NavLink, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import MovieInput from './MovieInput'
+import TvInput from './TvInput'
+const ApiKey = process.env.REACT_APP_MOVIE_API_KEY;
+class Header extends Component {
+    state = {
+        searchData: ''
+    }
 
-const Header = (props) => {
-    return (
-        <div className="header">
-            <div className="buttons">
-                <NavLink exact to="/">Movies</NavLink>
-                <NavLink exact to="/tvSeries">Tv Series</NavLink></div>
-            <input type="search" path="/" placeholder="search movie or tv serie" />
-        </div>
-    );
+    search = (e) => {
+        if (e.target.value.length > 0) {
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${e.target.value}`)
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({
+                        searchData: data
+                    })
+                })
+                .catch(error => console.log(error))
+        } else {
+            this.setState({
+                searchData: ''
+            })
+        }
+
+    }
+    resetState = () => {
+        this.setState({ searchData: "" });
+        document.querySelector('.search-bar__input').value = "";
+    }
+
+    render() {
+        return (
+            <div className="header">
+                <div className="buttons">
+                    <NavLink exact to="/">Movies</NavLink>
+                    <NavLink to="/tvSeries">Tv Series</NavLink>
+                </div>
+
+                <Switch>
+                    <Route exact path="/" component={MovieInput} />
+                    <Route path="/tvSeries" component={TvInput} />
+                    <Route path='/movie/:id' component={MovieInput} />
+                    <Route path='/tv/:id' component={TvInput} />
+                </Switch>
+            </div>);
+    }
 }
 
 export default Header;
+

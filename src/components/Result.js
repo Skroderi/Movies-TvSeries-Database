@@ -98,6 +98,7 @@ const Result = (props) => {
     return (
 
         <Switch>
+            <Route exact path="/" component={Movies} />
             <Route exact path="/movies" component={Movies} />
             <Route path="/movies/popular" component={PopularMovies} />
             <Route path="/movies/toprated" component={TopRatedMovies} />

@@ -40,6 +40,7 @@ class Header extends Component {
                 </div>
                 <Switch>
                     <Route path="/movies" component={MovieInput} />
+                    <Route exact path="/" component={MovieInput} />
                     <Route path="/tvSeries" component={TvInput} />
                     <Route path='/movie/:id' component={MovieInput} />
                     <Route path='/tv/:id' component={TvInput} />

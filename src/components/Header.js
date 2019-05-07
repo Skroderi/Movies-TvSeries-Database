@@ -35,16 +35,18 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="buttons">
-                    <NavLink exact to="/">Movies</NavLink>
+                    <NavLink to="/movies">Movies</NavLink>
                     <NavLink to="/tvSeries">Tv Series</NavLink>
                 </div>
-
                 <Switch>
-                    <Route exact path="/" component={MovieInput} />
+                    <Route path="/movies" component={MovieInput} />
                     <Route path="/tvSeries" component={TvInput} />
                     <Route path='/movie/:id' component={MovieInput} />
                     <Route path='/tv/:id' component={TvInput} />
                 </Switch>
+                <div className="secondary nav buttons">
+
+                </div>
             </div>);
     }
 }

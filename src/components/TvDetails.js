@@ -4,7 +4,7 @@ const ApiKey = process.env.REACT_APP_MOVIE_API_KEY;
 class TvDetails extends Component {
     state = {
         tvDetails: [],
-        id: this.props.id
+        dataCastDetails: [],
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -29,12 +29,22 @@ class TvDetails extends Component {
             .catch(error => {
                 console.log(error)
             })
+        fetch(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${ApiKey}`)
+            .then(resp => resp.json())
+            .then(data => {
+                this.setState({
+                    dataCastDetails: data
+                })
+            })
+            .catch(error => console.log(error))
+
     }
 
 
     render() {
         const tv = this.state.tvDetails;
-        // console.log(this.state.tvDetails);
+        const cast = this.state.dataCastDetails.cast
+
         return (
             <div className="container">
                 <div className="bg" style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${tv.backdrop_path}')` }}></div>
@@ -76,6 +86,18 @@ class TvDetails extends Component {
                                 sandbox="allow-scripts allow-same-origin allow-presentation"
                                 frameBorder="0">
                             </iframe>
+                        )
+                    })}
+                </div>
+                <div className="movie-cast">
+                    <h1 className="movie-cast__title">Cast</h1>
+                    {cast && cast.slice(0, 6).map(cast => {
+                        return (
+                            <div className="movie-cast__item" key={cast.id}>
+                                <img className="movie-cast__img" src={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`} alt={cast.name} />
+                                <p className="movie-cast__name"><strong>{cast.name}</strong></p>
+                                <p className="movie-cast__character"><span>as:</span> {cast.character}</p>
+                            </div>
                         )
                     })}
                 </div>

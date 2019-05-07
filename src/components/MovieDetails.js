@@ -3,6 +3,7 @@ const ApiKey = process.env.REACT_APP_MOVIE_API_KEY;
 class MovieDetals extends Component {
     state = {
         movieDetails: [],
+        dataCastDetails: [],
     }
     componentDidUpdate(prevProps) {
 
@@ -27,10 +28,22 @@ class MovieDetals extends Component {
             .catch(error => {
                 console.log(error)
             })
+
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}/casts?api_key=${ApiKey}`)
+            .then(resp => resp.json())
+            .then(data => {
+                this.setState({
+                    dataCastDetails: data
+                })
+            })
+            .catch(error => console.log(error))
     }
+
     render() {
-        // console.log(this.state.movieDetails);
         const movieDetails = this.state.movieDetails;
+        const cast = this.state.dataCastDetails.cast
+
         return (
 
             <div className="container">
@@ -77,6 +90,18 @@ class MovieDetals extends Component {
                     })}
                 </div>
 
+                <div className="movie-cast">
+                    <h1 className="movie-cast__title">Cast</h1>
+                    {cast && cast.slice(0, 6).map(cast => {
+                        return (
+                            <div className="movie-cast__item" key={cast.id}>
+                                <img className="movie-cast__img" src={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`} alt={cast.name} />
+                                <p className="movie-cast__name"><strong>{cast.name}</strong></p>
+                                <p className="movie-cast__character"><span>as:</span> {cast.character}</p>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         );
     }

@@ -42,13 +42,42 @@ width:100%;
   text-decoration: none;
   list-style: none;
   font-family: Teko,sans-serif;
-  font-weight: 600;
   font-size: 20px;
   text-transform: uppercase; 
+  margin: 0 10px 0 10px;
+  transition: .2s
 }
 .active{
-  transform: scale(1.05);
+  transform: scale(1.12);
   box-shadow: 0 0 10px #b90606;
+  font-weight: 600;
+}
+
+.sort{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: space-around;
+}
+.sort a{
+  display:block;
+  text-align: center;
+  padding: 10px 4px;
+  background-color: #fff;
+  color:black;
+  border:2px solid black;
+  text-decoration: none;
+  list-style: none;
+  font-family: Teko,sans-serif;
+  font-size: 14px;
+  text-transform: uppercase; 
+  margin: auto;
+  transition: .2s;
+}
+.sort .active{
+  box-shadow: 0 0 10px #63f800;
+  font-weight: 600;
+    transform: scale(1.05);
 }
 
 .header{
@@ -152,7 +181,7 @@ font-size:20px;
   width:100%;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-bottom:50px;
+  /* padding-bottom:50px; */
 }
 .movieVideos h1{
   width:100%;
@@ -198,16 +227,39 @@ transition: .3s
 .movie .info span{
   font-size:20px;
 }
-
+.movie-cast, .movie-crew {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-around;
+}
+.movie-cast .movie-cast__title, .movie-cast .movie-crew__title, .movie-crew .movie-cast__title, .movie-crew .movie-crew__title {
+  width: 100%;
+  text-align: center;
+}
 
 @media(min-width:750px){
   .buttons a{
     font-size: 25px;
     padding: 12px 15px;
-    margin:5px;
+    margin: 0 10px 0 10px 
   }
   .buttons{
     margin-top:40px;
+    justify-content: center
+  }
+  .sort a{
+    font-size: 20px;
+    padding: 10px 10px;
+    margin: 0 15px 0 15px 
+  }
+
+  .sort{
     justify-content: center
   }
   .movieInfo{
@@ -223,4 +275,12 @@ transition: .3s
    .video{
      width:48%;
    }
+}
+
+@media(min-width:1200px){
+  .buttons a{
+    font-size: 30px;
+    margin: 0 15px 0 15px 
+  }
+
 }

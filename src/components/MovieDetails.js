@@ -6,7 +6,7 @@ class MovieDetals extends Component {
         dataCastDetails: [],
     }
     componentDidUpdate(prevProps) {
-
+        window.scrollTo(0, 0)
         if (this.props.match.params.id !== prevProps.match.params.id) {
             this.componentDidMount()
         }

@@ -22,8 +22,6 @@ class App extends Component {
     topRatedMovies: [],
     popularTvs: [],
     topRatedTvs: [],
-    bgcM: '',
-    bgcT: ''
   }
   componentDidMount() {
     fetch(movieApi)
@@ -34,7 +32,6 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         movies: data.results,
-        bgcM: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
@@ -48,7 +45,6 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         popularMovies: data.results,
-        bgcM: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
@@ -62,7 +58,6 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         topRatedMovies: data.results,
-        bgcM: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
@@ -76,7 +71,6 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         tvSeries: data.results,
-        bgcT: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
@@ -90,7 +84,6 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         popularTvs: data.results,
-        bgcM: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)
@@ -104,7 +97,6 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({
         topRatedTvs: data.results,
-        bgcM: data.results[0].backdrop_path
       }))
       .catch(error => {
         console.log(error)

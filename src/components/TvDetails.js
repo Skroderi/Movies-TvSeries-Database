@@ -7,6 +7,7 @@ class TvDetails extends Component {
         dataCastDetails: [],
     }
     componentDidUpdate(prevProps) {
+        window.scrollTo(0, 190)
         if (this.props.match.params.id !== prevProps.match.params.id) {
             this.componentDidMount()
         }

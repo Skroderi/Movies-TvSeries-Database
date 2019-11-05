@@ -1,0 +1,47 @@
+.movie {
+  position: relative;
+  width: 300px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  margin: 15px auto;
+  cursor: pointer;
+  margin: 15px auto;
+  &__poster {
+    width: 100%;
+    height: auto;
+  }
+  &__info {
+    position: absolute;
+    background-color: $tertiaryColor;
+    color: $secondaryColor;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 999;
+    transition: 0.3s;
+    padding: $padding / 2;
+
+    &-header {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    &-release {
+      font-size: 1.2rem;
+      margin-top: 30px;
+    }
+    &-date {
+      font-size: 0.8rem;
+      color: $secondaryColor;
+    }
+  }
+  &:hover .movie__info {
+    opacity: 1;
+  }
+}
+
+.movie__info-rate {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}

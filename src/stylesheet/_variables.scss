@@ -1,0 +1,31 @@
+//////////// BREAKPOINTS ///////////
+
+$breakpoints: (
+  small: (
+    min-width: 500px
+  ),
+  medium: (
+    min-width: 700px
+  ),
+  large: (
+    min-width: 900px
+  ),
+  xlarge: (
+    min-width: 1100px
+  )
+);
+
+///////////////////////////////
+$primaryColor: rgba(255, 255, 255, 0.6);
+$secondaryColor: #fff;
+$tertiaryColor: #000;
+$dangerColor: #b90606;
+$positiveColor: #63f800;
+$shadow: 0 0 30px #3e3e3e;
+
+$padding: 20px;
+$margin: 20px;
+
+$center: 0 auto;
+
+$bold: 700;

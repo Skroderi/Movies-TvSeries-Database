@@ -1,0 +1,11 @@
+.container__bg {
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

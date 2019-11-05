@@ -1,0 +1,19 @@
+@import "./variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  background-color: $primaryColor;
+  box-shadow: $shadow;
+  align-items: center;
+  height: 100%;
+  margin: $center;
+}
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

@@ -1,0 +1,104 @@
+.header {
+  width: 90%;
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
+    margin: 20px auto;
+    @include mq(small) {
+      width: 200px;
+    }
+    &-button {
+      display: block;
+      text-align: center;
+      padding: 10px 10px;
+      background-color: $secondaryColor;
+      color: $tertiaryColor;
+      border: 2px solid $tertiaryColor;
+      text-decoration: none;
+      list-style: none;
+      font-family: Teko, sans-serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      margin: 0 15px;
+      transition: 0.2s;
+      &--active {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px $dangerColor;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__search-bar {
+    position: relative;
+    width: 100%;
+    &-input {
+      width: 100%;
+      height: 50px;
+      margin-top: 20px;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      border: 2px solid $tertiaryColor;
+      color: $tertiaryColor;
+      padding-left: 20px;
+    }
+  }
+
+  .search-bar__list {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    z-index: 9999;
+  }
+  .search-bar__link {
+    color: $tertiaryColor;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  .search-bar__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: $secondaryColor;
+    border-bottom: 1px solid #dadada;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    &--title {
+      padding-left: 10px;
+    }
+  }
+  &__filterBtns {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-around;
+    margin: 40px auto;
+    @include mq(small) {
+      width: 350px;
+    }
+    &-button {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background-color: $secondaryColor;
+      color: $tertiaryColor;
+      border: 2px solid $tertiaryColor;
+      text-decoration: none;
+      list-style: none;
+      font-family: Teko, sans-serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      text-transform: uppercase;
+      margin: auto;
+      transition: 0.2s;
+      &--active {
+        box-shadow: 0 0 10px $positiveColor;
+        font-weight: 600;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

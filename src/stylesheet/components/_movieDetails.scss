@@ -1,0 +1,101 @@
+.movieDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+  padding: 0 10px;
+  &__poster {
+    width: 300px;
+    margin: 0 10px;
+    &-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  @include mq(medium) {
+    flex-direction: row;
+    margin: 0;
+    align-items: stretch;
+  }
+}
+
+.movieDesc {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  &__header {
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+
+  &__overview {
+    font-size: 1.2rem;
+    @include mq(small) {
+      font-size: 1.4rem;
+    }
+  }
+  @include mq(medium) {
+    text-align: left;
+  }
+}
+.movieDesc__list-items {
+  font-size: 1.1rem;
+  align-items: left;
+  @include mq(small) {
+    font-size: 1.4rem;
+  }
+}
+.list_item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  flex-wrap: wrap;
+  padding: 0px;
+}
+.list__item-paragraph {
+  margin: 10px 10px 10px 0px;
+}
+
+.movie-videos {
+  display: flex;
+  width: 95%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  &__title {
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 20px 0;
+  }
+  &__video {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 450px;
+    height: 300px;
+    margin-bottom: 10px;
+  }
+}
+
+.movie-cast {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  text-align: center;
+  &__title {
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 20px 0;
+  }
+  &__info {
+    padding: 5px 0 20px 0;
+  }
+}

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/movies-tvSeries-database/static/css/main.cd5c2d7f.chunk.css",
-    "main.js": "/movies-tvSeries-database/static/js/main.7080f2f8.chunk.js",
-    "main.js.map": "/movies-tvSeries-database/static/js/main.7080f2f8.chunk.js.map",
+    "main.js": "/movies-tvSeries-database/static/js/main.99ecea55.chunk.js",
+    "main.js.map": "/movies-tvSeries-database/static/js/main.99ecea55.chunk.js.map",
     "runtime-main.js": "/movies-tvSeries-database/static/js/runtime-main.6c229c05.js",
     "runtime-main.js.map": "/movies-tvSeries-database/static/js/runtime-main.6c229c05.js.map",
     "static/js/2.93784754.chunk.js": "/movies-tvSeries-database/static/js/2.93784754.chunk.js",
     "static/js/2.93784754.chunk.js.map": "/movies-tvSeries-database/static/js/2.93784754.chunk.js.map",
     "index.html": "/movies-tvSeries-database/index.html",
-    "precache-manifest.ca4d66cdd4d2f8b20f3f97e579d85293.js": "/movies-tvSeries-database/precache-manifest.ca4d66cdd4d2f8b20f3f97e579d85293.js",
+    "precache-manifest.1615ac74282d84698e677abf1fad8acf.js": "/movies-tvSeries-database/precache-manifest.1615ac74282d84698e677abf1fad8acf.js",
     "service-worker.js": "/movies-tvSeries-database/service-worker.js",
     "static/css/main.cd5c2d7f.chunk.css.map": "/movies-tvSeries-database/static/css/main.cd5c2d7f.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.6c229c05.js",
     "static/js/2.93784754.chunk.js",
     "static/css/main.cd5c2d7f.chunk.css",
-    "static/js/main.7080f2f8.chunk.js"
+    "static/js/main.99ecea55.chunk.js"
   ]
 }

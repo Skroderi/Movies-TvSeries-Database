@@ -24,7 +24,7 @@ import store from "../store";
 function Root() {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <MainTemplate>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/movies" />} />

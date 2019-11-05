@@ -2,17 +2,22 @@ import React, { useEffect } from "react";
 import Landing from "../templates/Landing";
 import Card from "../components/Card/Card";
 import { fetchMovies } from "../actions/movies";
+import { clearSearchedItems } from "../actions/searchItem";
 import { connect } from "react-redux";
 import Background from "../components/Background/Background";
 import withContext from "../hoc/withContext";
 import PropTypes from "prop-types";
 
-function Movies({ fetchMovies, movies }) {
+function Movies({ fetchMovies, movies, clearSearchedItems, searchedItems }) {
   useEffect(() => {
     if (movies.trending.length < 1) {
       fetchMovies();
     }
-  }, [fetchMovies, movies.trending.length]);
+    if (searchedItems.length > 0) {
+      document.querySelector(".header__search-bar-input").value = "";
+      clearSearchedItems();
+    }
+  }, [fetchMovies, movies.trending.length, clearSearchedItems]);
 
   return (
     <Landing>
@@ -37,13 +42,15 @@ function Movies({ fetchMovies, movies }) {
 
 Movies.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
-  movies: PropTypes.object.isRequired
+  movies: PropTypes.object.isRequired,
+  searchedItems: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.movies,
+  searchedItems: state.searchedItems
 });
 export default connect(
   mapStateToProps,
-  { fetchMovies }
+  { fetchMovies, clearSearchedItems }
 )(withContext(Movies));

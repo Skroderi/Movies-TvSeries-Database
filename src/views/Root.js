@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { Route, Switch, Redirect, HashRouter } from "react-router-dom";
 
 // CSS
 import "../stylesheet/Main.scss";
@@ -24,7 +19,7 @@ import store from "../store";
 function Root() {
   return (
     <Provider store={store}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <HashRouter>
         <MainTemplate>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/movies" />} />
@@ -38,7 +33,7 @@ function Root() {
             <Route exact path="/tvs" component={Tvseries} />
           </Switch>
         </MainTemplate>
-      </Router>
+      </HashRouter>
     </Provider>
   );
 }

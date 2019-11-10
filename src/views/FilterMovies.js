@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Landing from "../templates/Landing";
+import GridTemplate from "../templates/GridTemplate";
 import Card from "../components/Card/Card";
 import PropTypes from "prop-types";
 import { fetchSortedMovies } from "../actions/movies";
@@ -27,7 +27,7 @@ function FilterMovies({
   ]);
 
   return (
-    <Landing>
+    <GridTemplate>
       {pageContext.sortCategory === "popular" ? (
         <>
           <Background
@@ -69,7 +69,7 @@ function FilterMovies({
           })}
         </>
       )}
-    </Landing>
+    </GridTemplate>
   );
 }
 

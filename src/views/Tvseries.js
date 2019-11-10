@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Landing from "../templates/Landing";
+import GridTemplate from "../templates/GridTemplate";
 import Card from "../components/Card/Card";
 import { connect } from "react-redux";
 import { fetchTvs } from "../actions/tvseries";
@@ -19,7 +19,7 @@ function Tvseries({ tvseries, fetchTvs, clearSearchedItems, searchedItems }) {
   }, [fetchTvs, tvseries.trending.length, clearSearchedItems]);
 
   return (
-    <Landing>
+    <GridTemplate>
       <Background
         bgc={
           tvseries.trending.length > 0 ? tvseries.trending[0].backdrop_path : ""
@@ -37,7 +37,7 @@ function Tvseries({ tvseries, fetchTvs, clearSearchedItems, searchedItems }) {
           />
         );
       })}
-    </Landing>
+    </GridTemplate>
   );
 }
 

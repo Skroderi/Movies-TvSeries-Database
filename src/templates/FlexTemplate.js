@@ -2,16 +2,16 @@ import React from "react";
 import Header from "../components/Header/Header";
 import PropTypes from "prop-types";
 
-function Landing({ children }) {
+function FlexTemplate({ children }) {
   return (
     <div className="container">
       <Header />
-      <main className="results">{children}</main>
+      <main className="result-item">{children}</main>
     </div>
   );
 }
-Landing.propTypes = {
+FlexTemplate.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired
 };
 
-export default Landing;
+export default FlexTemplate;

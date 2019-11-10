@@ -13,7 +13,10 @@
   margin: $center;
 }
 .results {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   width: 100%;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 20px;
+  justify-content: center;
+  padding-bottom: 20px;
 }

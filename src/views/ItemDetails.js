@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Landing from "../templates/Landing";
+import FlexTemplate from "../templates/FlexTemplate";
 import withContext from "../hoc/withContext";
 import { getItemDetails, getItemCast } from "../actions/itemDetails";
 import { connect } from "react-redux";
@@ -22,7 +22,7 @@ function ItemDetails({
   }, [pathname, getItemDetails, match.params.id]);
 
   return (
-    <Landing>
+    <FlexTemplate>
       <Background
         bgc={itemDetails.backdrop_path ? itemDetails.backdrop_path : ""}
       />
@@ -143,7 +143,7 @@ function ItemDetails({
             );
           })}
       </div>
-    </Landing>
+    </FlexTemplate>
   );
 }
 

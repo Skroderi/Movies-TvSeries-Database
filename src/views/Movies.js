@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Landing from "../templates/Landing";
+import GridTemplate from "../templates/GridTemplate";
 import Card from "../components/Card/Card";
 import { fetchMovies } from "../actions/movies";
 import { clearSearchedItems } from "../actions/searchItem";
@@ -20,7 +20,7 @@ function Movies({ fetchMovies, movies, clearSearchedItems, searchedItems }) {
   }, [fetchMovies, movies.trending.length, clearSearchedItems]);
 
   return (
-    <Landing>
+    <GridTemplate>
       <Background
         bgc={movies.trending.length > 0 ? movies.trending[0].backdrop_path : ""}
       />
@@ -36,7 +36,7 @@ function Movies({ fetchMovies, movies, clearSearchedItems, searchedItems }) {
           />
         );
       })}
-    </Landing>
+    </GridTemplate>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Landing from "../templates/Landing";
+import GridTemplate from "../templates/GridTemplate";
 import Card from "../components/Card/Card";
 import { fetchSortedTvs } from "../actions/tvseries";
 import { connect } from "react-redux";
@@ -27,7 +27,7 @@ function FilterTvs({
   ]);
 
   return (
-    <Landing>
+    <GridTemplate>
       {pageContext.sortCategory === "popular" ? (
         <>
           <Background
@@ -73,7 +73,7 @@ function FilterTvs({
           })}
         </>
       )}
-    </Landing>
+    </GridTemplate>
   );
 }
 
